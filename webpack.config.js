@@ -18,11 +18,12 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "./dist"),
     },
+    hot: true,
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
