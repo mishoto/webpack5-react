@@ -1,4 +1,4 @@
-import "../src/index.css";
+import "../src/styles/index.scss";
 
 const recipe = {
   apple: 2,
