@@ -1,17 +1,4 @@
-import "../src/styles/index.scss";
+import { render } from "react-dom";
+import App from "./components/App";
 
-const recipe = {
-  apple: 2,
-  mango: 4,
-  orange: 4,
-};
-
-const recipe01 = {
-  ...recipe,
-  juice: 3,
-  mango: 2,
-  banana: 1,
-};
-
-console.log(recipe);
-console.log(recipe01);
+render(<App />, document.getElementById("root"));
