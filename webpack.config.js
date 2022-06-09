@@ -13,6 +13,9 @@ if (process.env.NODE_ENV === "development") {
 
 module.exports = {
   mode: "production",
+  output: {
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
   devtool: "source-map",
   devServer: {
     static: {
@@ -23,16 +26,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpeg|jpg|gif|svg)$/,
+        type: "asset/resource",
+      },
+      {
         test: /\.s?css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: "" },
+          },
           "css-loader",
           "postcss-loader",
           "sass-loader",
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -41,4 +51,8 @@ module.exports = {
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
 };
